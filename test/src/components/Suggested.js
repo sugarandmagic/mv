@@ -2,13 +2,13 @@
 import React, { Component } from 'react';
 
 class Suggested extends Component {
-  render() {
-    return (
-      <div className="Suggested">
+    render() {
+        return (
+            <div className="Suggested">
         Suggested
-      </div>
-    );
-  }
+            </div>
+        );
+    }
 }
 
 export default Suggested;
