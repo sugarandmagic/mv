@@ -13,6 +13,10 @@ const toggleStarred = (id: string, starred: boolean): Object => ({
   starred
 })
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> a bunch more boilerplate
 /**
  * sortStarred - action to sort the list of starred influencers on a given property
  *

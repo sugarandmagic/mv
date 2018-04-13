@@ -5,7 +5,27 @@ import { Provider } from 'react-redux';
 import App from './components/App';
 import rootReducer from './reducers';
 
+<<<<<<< HEAD
 const initialState = ({});
+=======
+const initialState = ({
+    influencers: [
+        // {
+        //     influencer_id: 123,
+        //     influencer_full_name: 'Hannah Ross',
+        //     influencer_instagram_username: 'hross64346',
+        //     influencer_instagram_profile_image:
+        // 'https://randomuser.me/api/portraits/women/62.jpg',
+        //     statistics: {
+        //         followers: 102523,
+        //         engagement: '3.14'
+        //     },
+        //     starred: true,
+        //     sortOrder: 0,
+        // },
+    ]
+});
+>>>>>>> a bunch more boilerplate
 
 const store = createStore(
     rootReducer,
