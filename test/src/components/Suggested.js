@@ -4,16 +4,17 @@ import React, { Component } from 'react';
 class SuggestedInfluencer extends Component {
     render(): * {
         const { toggleStarred, influencer } = this.props;
+        const { instagram_profile_image, name, instagram_username, id } = influencer;
         return (
             <div>
                 <img
-                    src={influencer.influencer_instagram_profile_image}
+                    src={instagram_profile_image}
                     alt='profile_pic'
                     className="instaIcon"
                 />
-                <h2 className="suggestedInfName">{influencer.influencer_full_name}</h2>
-                <div className="instaHandle">{influencer.influencer_instagram_username}</div>
-            <button className="addButton" onClick={() => toggleStarred(influencer.influencer_id, true)}>+</button>
+                <h2 className="suggestedInfName">{name}</h2>
+                <div className="instaHandle">{instagram_username}</div>
+                <button className="addButton" onClick={(): void => toggleStarred(id, true)}>+</button>
             </div>
         );
     }

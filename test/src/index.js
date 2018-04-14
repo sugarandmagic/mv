@@ -7,72 +7,66 @@ import rootReducer from './reducers';
 
 export const mockState = [
     {
-        'influencer_id': 987,
-        'influencer_full_name': 'Anna Griffin',
-        'influencer_instagram_username': 'anna_griffin_123',
-        'influencer_instagram_profile_image':
+        'id': 987,
+        'name': 'Anna Griffin',
+        'instagram_username': 'anna_griffin_123',
+        'instagram_profile_image':
         'https://randomuser.me/api/portraits/women/6.jpg',
-        'statistics': {
-            'followers': 21231,
-            'engagement': '6.84'
-        }
+        'followers': 21231,
+        'engagement': '6.84',
+        'starred': false
     },
     {
-        'influencer_id': 876,
-        'influencer_full_name': 'Melissa Peterson',
-        'influencer_instagram_username': 'melissa_peterson',
-        'influencer_instagram_profile_image':
+        'id': 876,
+        'name': 'Melissa Peterson',
+        'instagram_username': 'melissa_peterson',
+        'instagram_profile_image':
         'https://randomuser.me/api/portraits/women/84.jpg',
-        'statistics': {
-            'followers': 5122,
-            'engagement': '5.23'
-        }
+        'followers': 5122,
+        'engagement': '5.23',
+        'starred': true
     },
     {
-        'influencer_id': 765,
-        'influencer_full_name': 'Kathryn Smith',
-        'influencer_instagram_username': 'kat_smith',
-        'influencer_instagram_profile_image':
+        'id': 765,
+        'name': 'Kathryn Smith',
+        'instagram_username': 'kat_smith',
+        'instagram_profile_image':
         'https://randomuser.me/api/portraits/women/71.jpg',
-        'statistics': {
-            'followers': 7161,
-            'engagement': '2.36'
-        }
+        'followers': 7161,
+        'engagement': '2.36',
+        'starred': false
     },
     {
-        'influencer_id': 654,
-        'influencer_full_name': 'Patricia Rios',
-        'influencer_instagram_username': 'patricia_rios_1993',
-        'influencer_instagram_profile_image':
+        'id': 654,
+        'name': 'Patricia Rios',
+        'instagram_username': 'patricia_rios_1993',
+        'instagram_profile_image':
         'https://randomuser.me/api/portraits/women/49.jpg',
-        'statistics': {
-            'followers': 91100,
-            'engagement': '1.61'
-        }
+        'followers': 91100,
+        'engagement': '1.61',
+        'starred': true
     },
     {
-        'influencer_id': 543,
-        'influencer_full_name': 'Joan Robertson',
-        'influencer_instagram_username': 'j_robertson_lol',
-        'influencer_instagram_profile_image':
+        'id': 543,
+        'name': 'Joan Robertson',
+        'instagram_username': 'j_robertson_lol',
+        'instagram_profile_image':
         'https://randomuser.me/api/portraits/women/26.jpg',
-        'statistics': {
-            'followers': 16013,
-            'engagement': '6.28'
-        }
+        'followers': 16013,
+        'engagement': '6.28',
+        'starred': false
     },
     {
-        'influencer_id': 432,
-        'influencer_full_name': 'Sharon Hopkins',
-        'influencer_instagram_username': 'sharon_hopkins234',
-        'influencer_instagram_profile_image':
+        'id': 432,
+        'name': 'Sharon Hopkins',
+        'instagram_username': 'sharon_hopkins234',
+        'instagram_profile_image':
         'https://randomuser.me/api/portraits/women/44.jpg',
-        'statistics': {
-            'followers': 37300,
-            'engagement': '4.73'
-        }
+        'followers': 37300,
+        'engagement': '4.73',
+        'starred': true
     }
-]
+];
 
 const initialState = ({
     influencers: mockState,

@@ -11,3 +11,5 @@ export const getInfluencerByIdSelector = (): Object => createSelector(
     getInfluencer,
     (influencerById: Object): Object => ({influencerById})
 );
+
+export const getSortOrder = (state: Array): Array => state.sortOrder;
