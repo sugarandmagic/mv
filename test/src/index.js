@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import Container from './Container/Container';
 import rootReducer from './reducers';
 
-const testData = [
+export const mockState = [
     {
         'influencer_id': 987,
         'influencer_full_name': 'Anna Griffin',
@@ -75,7 +75,7 @@ const testData = [
 ]
 
 const initialState = ({
-    influencers: testData,
+    influencers: mockState,
 });
 
 const store = createStore(

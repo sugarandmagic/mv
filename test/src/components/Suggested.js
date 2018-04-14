@@ -13,7 +13,7 @@ class SuggestedInfluencer extends Component {
                 />
                 <h2 className="suggestedInfName">{influencer.influencer_full_name}</h2>
                 <div className="instaHandle">{influencer.influencer_instagram_username}</div>
-                <button className="addButton" onClick={toggleStarred(influencer.influencer_id, true)}>+</button>
+            <button className="addButton" onClick={() => toggleStarred(influencer.influencer_id, true)}>+</button>
             </div>
         );
     }
@@ -21,8 +21,8 @@ class SuggestedInfluencer extends Component {
 
 class Suggested extends Component {
     render(): * {
-        const { influencers } = this.props;
-        const suggestedInfluencers = influencers.map((influencer: Object, index: number): Object => <SuggestedInfluencer key={index} influencer={influencer}/>);
+        const { toggleStarred, influencers } = this.props;
+        const suggestedInfluencers = influencers.map((influencer: Object, index: number): Object => <SuggestedInfluencer key={index} influencer={influencer} toggleStarred={toggleStarred}/>);
         return (
             <div className="suggested">
                 <h1 className="suggestedHeader">Suggested Influencers</h1>

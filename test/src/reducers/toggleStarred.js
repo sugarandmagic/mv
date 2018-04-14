@@ -1,14 +1,21 @@
 //@flow
 
 /**
- * toggleStarred - description
+ * toggleStarred - toggles the 'starred' field on the selected influencer
  *
- * @param  {type} id description
- * @return {type}    description
+ * @param  {Array}  state   The application state
+ * @param  {Object} action  The redux action dispatched
+ * @return {Array}          The new or unmodified state
  */
-const toggleStarred = (state: boolean = false, action) => {
-    if (action.type = 'TOGGLE_STARRED') {
-        return !(state);  
+const toggleStarred = (state: Array = [], action: Object) => {
+    if (action.type === 'TOGGLE_STARRED') {
+        const influencerIndex = state.findIndex((influencer) => influencer.influencer_id === action.id);
+        if (influencerIndex > -1) {
+            Object.assign(state[influencerIndex], {starred: !(state[influencerIndex].starred)});
+        }
+        return state;
     }
     return state;
 };
+
+export default toggleStarred;
