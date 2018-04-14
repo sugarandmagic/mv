@@ -4,11 +4,11 @@ import Suggested from './Suggested';
 import Starred from './Starred';
 
 class App extends Component {
-    render() {
+    render(): * {
         return (
             <div className="App">
-                <Suggested />
-                <Starred />
+                <Suggested influencers={this.props.influencers}/>
+                <Starred influencers={this.props.influencers}/>
             </div>
         );
     }
