@@ -1,17 +1,18 @@
 //@flow
 
 import { connect } from 'react-redux';
-import App from './components/App';
+import App from '../components/App';
+import { toggleStarred } from '../actions';
 
-const mapStateToProps = (state) => ({
-
+const mapStateToProps = (state: Object = {}): Object => ({
+    influencers: state.influencers,
 });
 
-const mapDispatchToProps = (state) => ({
-
+const mapDispatchToProps = (): Object => ({
+    toggleStarred,
 });
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
+    mapStateToProps,
+    mapDispatchToProps,
 )(App);
