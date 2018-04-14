@@ -5,9 +5,6 @@ import { Provider } from 'react-redux';
 import App from './components/App';
 import rootReducer from './reducers';
 
-<<<<<<< HEAD
-const initialState = ({});
-=======
 const initialState = ({
     influencers: [
         // {
@@ -25,7 +22,6 @@ const initialState = ({
         // },
     ]
 });
->>>>>>> a bunch more boilerplate
 
 const store = createStore(
     rootReducer,
