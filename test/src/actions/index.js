@@ -2,33 +2,26 @@
 
 /**
 * toggleStarred - action to toggle the starred status
-*
-* @param  {string}   id        influencerId
-* @param  {boolean}  starred   starred status
-* @return {type}               description
+* @param  {string} id ID of the influencer
+* @return {Object}    Redux action
 */
-const toggleStarred = (id: string, starred: boolean): Object => {
+export const toggleStarred = (id: string): Object => {
+    console.log('toggle starred!', id);
     return {
         type: 'TOGGLE_STARRED',
         id,
-        starred
     };
 };
 
 
 /**
 * sortStarred - action to sort the list of starred influencers on a given property
-*
-* @param  {string} id influencerId
-* @return {Object}    description
+* @param  {string} id       ID of the influencer
+* @param  {string} sortKey  Key on which to sort the influencers
+* @return {Object}          Redux action
 */
-const sortStarred = (id: string, sortKey: string): Object => ({
+export const sortStarred = (id: string, sortKey: string): Object => ({
     type: 'SORT_STARRED',
     id,
     sortKey
 });
-
-export {
-    toggleStarred,
-    sortStarred
-};

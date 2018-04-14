@@ -16,7 +16,7 @@ class StarredInfluencer extends Component {
                 </div>
                 <div>{influencer.statistics.followers} Followers</div>
                 <div>{influencer.statistics.engagement}% Engagement</div>
-                <button className="removeButton" onClick={toggleStarred(influencer.influencer_id, false)}>X</button>
+            <button className="removeButton" onClick={ () => toggleStarred(influencer.influencer_id, false)}>X</button>
             </div>
         );
     }
@@ -25,8 +25,8 @@ class StarredInfluencer extends Component {
 
 class Starred extends Component {
     render(): * {
-        const { influencers } = this.props;
-        const starredInfluencers = influencers.map((influencer: Object, index: number): Object => <StarredInfluencer key={index} influencer={influencer}/>);
+        const { toggleStarred, influencers } = this.props;
+        const starredInfluencers = influencers.map((influencer: Object, index: number): Object => <StarredInfluencer key={index} influencer={influencer} toggleStarred={toggleStarred}/>);
         return (
             <div className="suggested">
                 <h1 className="suggestedHeader">Starred Influencers</h1>

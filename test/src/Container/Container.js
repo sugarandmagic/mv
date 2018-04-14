@@ -3,14 +3,15 @@
 import { connect } from 'react-redux';
 import App from '../components/App';
 import { toggleStarred } from '../actions';
+import { getInfluencers } from '../selectors/selectors';
 
 const mapStateToProps = (state: Object = {}): Object => ({
-    influencers: state.influencers,
+    influencers: getInfluencers(state),
 });
 
-const mapDispatchToProps = (): Object => ({
+const mapDispatchToProps = {
     toggleStarred,
-});
+};
 
 export default connect(
     mapStateToProps,
