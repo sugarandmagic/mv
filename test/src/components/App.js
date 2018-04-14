@@ -7,8 +7,16 @@ class App extends Component {
     render(): * {
         return (
             <div className="App">
-                <Suggested influencers={this.props.influencers} toggleStarred={this.props.toggleStarred} />
-                <Starred influencers={this.props.influencers} toggleStarred={this.props.toggleStarred} />
+                <Suggested
+                    influencers={this.props.influencers}
+                    toggleStarred={this.props.toggleStarred}
+                />
+                <Starred
+                    influencers={this.props.influencers}
+                    toggleStarred={this.props.toggleStarred}
+                    sortStarred={this.props.sortStarred}
+                    sortOrder={this.props.sortOrder}
+                />
             </div>
         );
     }

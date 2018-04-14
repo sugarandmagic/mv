@@ -20,7 +20,8 @@
     "react-scripts": "1.1.4",
     "redux": "^3.7.2",
     "reselect": "^3.0.1",
-    "sinon-chai": "^3.0.0"
+    "sinon-chai": "^3.0.0",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "arrow-mocha": "^1.0.1",

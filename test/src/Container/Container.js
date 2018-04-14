@@ -2,15 +2,17 @@
 
 import { connect } from 'react-redux';
 import App from '../components/App';
-import { toggleStarred } from '../actions';
-import { getInfluencers } from '../selectors/selectors';
+import { toggleStarred, sortStarred } from '../actions';
+import { getInfluencers, getSortOrder } from '../selectors/selectors';
 
 const mapStateToProps = (state: Object = {}): Object => ({
     influencers: getInfluencers(state),
+    sortOrder: getSortOrder(state)
 });
 
 const mapDispatchToProps = {
     toggleStarred,
+    sortStarred,
 };
 
 export default connect(

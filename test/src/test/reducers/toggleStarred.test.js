@@ -1,4 +1,4 @@
-import { expect, it } from '../test-common';
+import { expect, it } from '../common/test-common';
 import toggleStarred from '../../reducers/toggleStarred';
 
 const mockState = [
@@ -24,7 +24,7 @@ const mockState = [
             'engagement': '4.73'
         }
     }
-]
+];
 
 describe('toggleStarred reducer', () => {
     it('should toggle the starred status on the correct influencer', () => {

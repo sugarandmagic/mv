@@ -7,9 +7,9 @@
  * @param  {Object} action  The redux action dispatched
  * @return {Array}          The new or unmodified state
  */
-const toggleStarred = (state: Array = [], action: Object) => {
+const toggleStarred = (state: Array = [], action: Object): Object => {
     if (action.type === 'TOGGLE_STARRED') {
-        const influencerIndex = state.findIndex((influencer) => influencer.influencer_id === action.id);
+        const influencerIndex = state.findIndex((influencer: Object): number => influencer.influencer_id === action.id);
         if (influencerIndex > -1) {
             Object.assign(state[influencerIndex], {starred: !(state[influencerIndex].starred)});
         }

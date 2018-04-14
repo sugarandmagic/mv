@@ -19,8 +19,7 @@ export const toggleStarred = (id: string): Object => {
 * @param  {string} sortKey  Key on which to sort the influencers
 * @return {Object}          Redux action
 */
-export const sortStarred = (id: string, sortKey: string): Object => ({
+export const sortStarred = (sortKey: string): Object => ({
     type: 'SORT_STARRED',
-    id,
     sortKey
 });
