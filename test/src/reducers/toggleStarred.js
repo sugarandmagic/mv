@@ -10,7 +10,10 @@
 const toggleStarred = (state: Array = [], action: Object) => {
     if (action.type === 'TOGGLE_STARRED') {
         const influencerIndex = state.findIndex((influencer) => influencer.influencer_id === action.id);
-        Object.assign(state[influencerIndex], {starred: !(state[influencerIndex].starred)});
+        if (influencerIndex > -1) {
+            Object.assign(state[influencerIndex], {starred: !(state[influencerIndex].starred)});
+        }
+        return state;
     }
     return state;
 };

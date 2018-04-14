@@ -5,7 +5,6 @@ import Starred from './Starred';
 
 class App extends Component {
     render(): * {
-        console.log('App', this.props)
         return (
             <div className="App">
                 <Suggested influencers={this.props.influencers} toggleStarred={this.props.toggleStarred} />

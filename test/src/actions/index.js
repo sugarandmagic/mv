@@ -6,7 +6,6 @@
 * @return {Object}    Redux action
 */
 export const toggleStarred = (id: string): Object => {
-    console.log('toggle starred!', id);
     return {
         type: 'TOGGLE_STARRED',
         id,

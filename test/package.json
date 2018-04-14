@@ -4,27 +4,30 @@
   "private": true,
   "scripts": {
     "start": "react-scripts start",
-    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "main": "lib/index.js",
     "build": "babel src/ -d dist/",
     "prepublish": "npm run build",
     "flow": "flow",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "mocha": "BABEL_ENV=test mocha --require ./src/test/index.js 'src/test/**/*.test.js'"
   },
   "dependencies": {
+    "chai": "^4.1.2",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
     "react-redux": "^5.0.7",
     "react-scripts": "1.1.4",
     "redux": "^3.7.2",
-    "reselect": "^3.0.1"
+    "reselect": "^3.0.1",
+    "sinon-chai": "^3.0.0"
   },
   "devDependencies": {
     "arrow-mocha": "^1.0.1",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.3",
     "babel-preset-flow": "^6.23.0",
+    "babel-register": "^6.26.0",
     "enzyme": "^3.3.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
@@ -35,6 +38,7 @@
     "flow-bin": "^0.69.0",
     "mocha": "^5.1.0",
     "mocha-sinon": "^2.0.0",
-    "sinon": "^4.5.0"
+    "sinon": "^4.5.0",
+    "transform-runtime": "0.0.0"
   }
 }
