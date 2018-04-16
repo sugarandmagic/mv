@@ -9,17 +9,22 @@ class SuggestedInfluencer extends Component {
     render(): * {
         const { toggleStarred, influencer, starredList } = this.props;
         const { instagram_profile_image, name, instagram_username, id } = influencer;
-        const instaHandle = (instagram_username) ? `@${instagram_username}` : '';
+        const instaHandle = (instagram_username) ? `${instagram_username}` : '';
+
         return (!starredList[influencer.id]) ? (
-            <div>
+            <div className="suggestedInfluencer">
                 <img
                     src={instagram_profile_image}
                     alt='profile_pic'
                     className="instaProfilePic"
                 />
-                <h2 className="suggestedInfName">{name}</h2>
-                <div className="instaHandle">{instaHandle}</div>
-                <button className="addButton" onClick={(): void => toggleStarred(id)}>+</button>
+                <div className="basicInfo">
+                    <h1 className="suggestedInfName">{name}</h1>
+                    <div className="instaHandle">
+                        <i className="fab fa-instagram"></i>{instaHandle}
+                    </div>
+                </div>
+                <div className="removeWrapper"><button className="removeButton" onClick={ (): void => toggleStarred(id)}>＋</button></div>
             </div>
         ) : '';
     }
@@ -40,7 +45,7 @@ class Suggested extends Component {
         const { toggleStarred, influencers, starredList } = this.props;
         return (
             <div className="suggested">
-                <h1 className="suggestedHeader">Suggested Influencers</h1>
+                <h1 className="suggestedTitle">Suggested Influencers</h1>
                 <div className="suggestedList">
                     {influencers.map((influencer: Object, index: number): Object => <SuggestedInfluencer key={index} influencer={influencer} toggleStarred={toggleStarred} starredList={starredList} />)}
                 </div>

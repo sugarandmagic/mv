@@ -2,22 +2,23 @@
 import React, { Component } from 'react';
 import _ from 'underscore';
 import { connect } from 'react-redux';
-import { Dropdown, Menu } from 'semantic-ui-react'
 import { getInfluencers, getSortOrder, getStarredList } from '../selectors/selectors';
 import { toggleStarred, sortStarred, influencerFetchRequested } from '../actions';
 import '../index.css';
+import { DropdownButton, MenuItem } from 'react-bootstrap';
 
 class StarredInfluencer extends Component {
 
     render(): * {
-
         const { toggleStarred, influencer, starredList } = this.props;
+
         const onClick = (id: string) => {
             toggleStarred(id);
         };
 
         const { instagram_profile_image, name, instagram_username, engagement, followers, id } = influencer;
         const instaHandle = (instagram_username) ? `${instagram_username}` : '';
+
         return (starredList[influencer.id]) ? (
             <div className="wrapper">
                 <div className="starredInfluencer">
@@ -25,10 +26,10 @@ class StarredInfluencer extends Component {
                         src={instagram_profile_image}
                         alt="profile_pic"
                         className="instaProfilePic" />
-                    <div className="rightInfo">
+                    <div className="basicInfo">
                         <h1 className="suggestedInfName">{name}</h1>
                         <div className="instaHandle">
-                            <i src="https://www.shareicon.net/data/128x128/2016/07/09/118293_instagram_512x512.png" className="instaIcon"/>{instaHandle}
+                            <i className="fab fa-instagram"></i>{instaHandle}
                         </div>
                     </div>
                     <div className="stats">
@@ -63,8 +64,8 @@ class Starred extends Component {
     render(): * {
         const { toggleStarred, influencers, sortStarred, sortOrder, starredList } = this.props;
 
-        const onChange = (e: Event) => {
-            sortStarred(e.target.value);
+        const onChange = (eventKey: string) => {
+            sortStarred(eventKey);
         };
         const sortStarredInfluencers = (starred: Array): Array => {
             if (sortOrder[1] === 'hilo' || undefined) {
@@ -73,24 +74,22 @@ class Starred extends Component {
                 return _.sortBy(starred, sortOrder[0]);
             }
         };
-
-        const options = [
-            {key: 1, value: 'engagement,hilo', text: 'Engagement (High - Low)'},
-            {key: 2, value: 'engagement,lohi', text: 'Engagement (Low - High)'},
-            {key: 3, value: 'followers,hilo', text: 'Followers (High - Low)'},
-            {key: 4, value: 'followers,lohi', text: 'Followers (Low - High)'},
-            {key: 5, value: 'name', text: 'Name (A-Z)'},
-            {key: 6, value: 'nstagram_username', text: 'Instagram Username (A-Z)'}
-        ]
         return (
             <div className="starred">
                 <div className="starredHeader">
                     <h1 className="starredTitle">Starred Influencers</h1>
                     <div className="sorter">
                         <div className="sorterLabel">Sort By:</div>
-                        <Menu compact>
-                            <Dropdown text='Dropdown' className="sortFilters" onChange={onChange} options={options} simple item/>
-                        </Menu>
+                        <div className="sorterWrapper">
+                            <DropdownButton id="select" title="Select Filter" onSelect={onChange}>
+                                <MenuItem id="1" eventKey="engagement,hilo">Engagement (High - Low)</MenuItem>
+                                <MenuItem id="2" eventKey="engagement,lohi">Engagement (Low - High)</MenuItem>
+                                <MenuItem id="3" eventKey="followers,hilo">Followers (High - Low)</MenuItem>
+                                <MenuItem id="4" eventKey="followers,lohi">Followers (Low - High)</MenuItem>
+                                <MenuItem id="5" eventKey="name">Name (A-Z)</MenuItem>
+                                <MenuItem id="6" eventKey="instagram_username">Instagram Username (A-Z)</MenuItem>
+                            </DropdownButton>
+                        </div>
                     </div>
                 </div>
                 <div className="starredList">
