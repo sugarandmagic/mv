@@ -13,7 +13,6 @@ const toggleStarred = (state: Array = [], action: Object): Object => {
         if (influencerIndex > -1) {
             Object.assign(state[influencerIndex], {starred: !(state[influencerIndex].starred)});
         }
-        return state;
     }
     return state;
 };

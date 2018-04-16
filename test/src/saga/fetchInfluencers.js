@@ -23,7 +23,7 @@ const transformInfluencersData = (starred: Array, suggested: Array): Array => {
     return starred.concat(suggested);
 };
 
-const fakeFetch = (data) => data.data;
+const fakeFetch = async (data) => await data.data;
 
 
 const fetchInfluencersData = async (type: string) => (type === 'starred') ?
