@@ -4,30 +4,40 @@ import _ from 'underscore';
 import { connect } from 'react-redux';
 import { getInfluencers, getSortOrder, getStarredList } from '../selectors/selectors';
 import { toggleStarred, sortStarred, influencerFetchRequested } from '../actions';
+import '../index.css';
+import { DropdownButton, MenuItem } from 'react-bootstrap';
 
 class StarredInfluencer extends Component {
 
     render(): * {
-
         const { toggleStarred, influencer, starredList } = this.props;
+
         const onClick = (id: string) => {
             toggleStarred(id);
         };
 
         const { instagram_profile_image, name, instagram_username, engagement, followers, id } = influencer;
+        const instaHandle = (instagram_username) ? `${instagram_username}` : '';
+
         return (starredList[influencer.id]) ? (
-            <div>
-                <img
-                    src={instagram_profile_image}
-                    alt="profile_pic"
-                    className="instaIcon" />
-                <h2 className="suggestedInfName">{name}</h2>
-                <div className="instaHandle">
-                    {instagram_username}
+            <div className="starredWrapper">
+                <div className="starredInfluencer">
+                    <img
+                        src={instagram_profile_image}
+                        alt="profile_pic"
+                        className="instaProfilePic" />
+                    <div className="basicInfo">
+                        <h1 className="suggestedInfName">{name}</h1>
+                        <div className="instaHandle">
+                            <i className="fab fa-instagram"></i>{instaHandle}
+                        </div>
+                    </div>
+                    <div className="stats">
+                        <div className="followers"><div className="stat">{followers.toLocaleString()}</div><div className="statLabel">Followers</div></div>
+                        <div className="engagement"><div className="stat">{engagement}%</div><div className="statLabel">Engagement</div></div>
+                    </div>
                 </div>
-                <div>{followers} Followers</div>
-                <div>{engagement}% Engagement</div>
-                <button className="removeButton" onClick={ (): void => onClick(id)}>X</button>
+                <div className="removeWrapper"><button className="toggleButton" onClick={ (): void => onClick(id)}>✕</button></div>
             </div>
         ) : '';
     }
@@ -53,9 +63,9 @@ class Starred extends Component {
 
     render(): * {
         const { toggleStarred, influencers, sortStarred, sortOrder, starredList } = this.props;
-        
-        const onChange = (e: Event) => {
-            sortStarred(e.target.value);
+
+        const onChange = (eventKey: string) => {
+            sortStarred(eventKey);
         };
         const sortStarredInfluencers = (starred: Array): Array => {
             if (sortOrder[1] === 'hilo' || undefined) {
@@ -66,15 +76,22 @@ class Starred extends Component {
         };
         return (
             <div className="starred">
-                <h1 className="starredHeader">Starred Influencers</h1>
-                <select className="sortFilters" onChange={onChange}>
-                    <option value='engagement,hilo'>Engagement (High - Low)</option>
-                    <option value='engagement,lohi'>Engagement (Low - High)</option>
-                    <option value='followers,hilo'>Followers (High - Low)</option>
-                    <option value='followers,lohi'>Followers (Low - High)</option>
-                    <option value='name'>Name (A-Z)</option>
-                    <option value='instagram_username'>Instagram Username (A-Z)</option>
-                </select>
+                <div className="starredHeader">
+                    <h1 className="starredTitle">Starred Influencers</h1>
+                    <div className="sorter">
+                        <div className="sorterLabel">Sort By:</div>
+                        <div className="sorterWrapper">
+                            <DropdownButton id="select" title="Select Filter" onSelect={onChange}>
+                                <MenuItem id="1" eventKey="engagement,hilo">Engagement (High - Low)</MenuItem>
+                                <MenuItem id="2" eventKey="engagement,lohi">Engagement (Low - High)</MenuItem>
+                                <MenuItem id="3" eventKey="followers,hilo">Followers (High - Low)</MenuItem>
+                                <MenuItem id="4" eventKey="followers,lohi">Followers (Low - High)</MenuItem>
+                                <MenuItem id="5" eventKey="name">Name (A-Z)</MenuItem>
+                                <MenuItem id="6" eventKey="instagram_username">Instagram Username (A-Z)</MenuItem>
+                            </DropdownButton>
+                        </div>
+                    </div>
+                </div>
                 <div className="starredList">
                     {sortStarredInfluencers(influencers).map((influencer: Object, index: number): Object => <StarredInfluencer key={index} influencer={influencer} toggleStarred={toggleStarred} starredList={starredList} />)}
                 </div>
