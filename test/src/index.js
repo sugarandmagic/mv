@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import { createStore, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga'
-import Container from './Container/Container';
+import App from './components/App';
 import rootReducer from './reducers';
 import fetchInfluencersSaga from './saga/fetchInfluencers';
 
@@ -91,7 +91,7 @@ sagaMiddleware.run(fetchInfluencersSaga);
 
 render(
     <Provider store={store}>
-        <Container />
+        <App />
     </Provider>,
     document.getElementById('root')
 );

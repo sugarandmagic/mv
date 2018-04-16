@@ -7,6 +7,7 @@ import toggleStarred from './toggleStarred';
  */
 const mapActionsToReducers = {
     'TOGGLE_STARRED': toggleStarred,
+    'INFLUENCER_FETCH_SUCCEEDED': (state = [], action) => action.influencers,
 };
 
 /**
