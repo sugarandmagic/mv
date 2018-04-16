@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import _ from 'underscore';
 import { connect } from 'react-redux';
+import { Dropdown, Menu } from 'semantic-ui-react'
 import { getInfluencers, getSortOrder, getStarredList } from '../selectors/selectors';
 import { toggleStarred, sortStarred, influencerFetchRequested } from '../actions';
 import '../index.css';
@@ -16,20 +17,26 @@ class StarredInfluencer extends Component {
         };
 
         const { instagram_profile_image, name, instagram_username, engagement, followers, id } = influencer;
-        const instaHandle = (instagram_username) ? `@${instagram_username}` : '';
+        const instaHandle = (instagram_username) ? `${instagram_username}` : '';
         return (starredList[influencer.id]) ? (
-            <div>
-                <img
-                    src={instagram_profile_image}
-                    alt="profile_pic"
-                    className="instaIcon" />
-                <h2 className="suggestedInfName">{name}</h2>
-                <div className="instaHandle">
-                    {instaHandle}
+            <div className="wrapper">
+                <div className="starredInfluencer">
+                    <img
+                        src={instagram_profile_image}
+                        alt="profile_pic"
+                        className="instaProfilePic" />
+                    <div className="rightInfo">
+                        <h1 className="suggestedInfName">{name}</h1>
+                        <div className="instaHandle">
+                            <i src="https://www.shareicon.net/data/128x128/2016/07/09/118293_instagram_512x512.png" className="instaIcon"/>{instaHandle}
+                        </div>
+                    </div>
+                    <div className="stats">
+                        <div className="followers"><div className="stat">{followers.toLocaleString()}</div><div className="statLabel">Followers</div></div>
+                        <div className="engagement"><div className="stat">{engagement}%</div><div className="statLabel">Engagement</div></div>
+                    </div>
                 </div>
-                <div>{followers} Followers</div>
-                <div>{engagement}% Engagement</div>
-                <button className="removeButton" onClick={ (): void => onClick(id)}>X</button>
+                <div className="removeWrapper"><button className="removeButton" onClick={ (): void => onClick(id)}>✕</button></div>
             </div>
         ) : '';
     }
@@ -55,7 +62,7 @@ class Starred extends Component {
 
     render(): * {
         const { toggleStarred, influencers, sortStarred, sortOrder, starredList } = this.props;
-        
+
         const onChange = (e: Event) => {
             sortStarred(e.target.value);
         };
@@ -66,17 +73,26 @@ class Starred extends Component {
                 return _.sortBy(starred, sortOrder[0]);
             }
         };
+
+        const options = [
+            {key: 1, value: 'engagement,hilo', text: 'Engagement (High - Low)'},
+            {key: 2, value: 'engagement,lohi', text: 'Engagement (Low - High)'},
+            {key: 3, value: 'followers,hilo', text: 'Followers (High - Low)'},
+            {key: 4, value: 'followers,lohi', text: 'Followers (Low - High)'},
+            {key: 5, value: 'name', text: 'Name (A-Z)'},
+            {key: 6, value: 'nstagram_username', text: 'Instagram Username (A-Z)'}
+        ]
         return (
             <div className="starred">
-                <h1 className="starredHeader">Starred Influencers</h1>
-                <select className="sortFilters" onChange={onChange}>
-                    <option value='engagement,hilo'>Engagement (High - Low)</option>
-                    <option value='engagement,lohi'>Engagement (Low - High)</option>
-                    <option value='followers,hilo'>Followers (High - Low)</option>
-                    <option value='followers,lohi'>Followers (Low - High)</option>
-                    <option value='name'>Name (A-Z)</option>
-                    <option value='instagram_username'>Instagram Username (A-Z)</option>
-                </select>
+                <div className="starredHeader">
+                    <h1 className="starredTitle">Starred Influencers</h1>
+                    <div className="sorter">
+                        <div className="sorterLabel">Sort By:</div>
+                        <Menu compact>
+                            <Dropdown text='Dropdown' className="sortFilters" onChange={onChange} options={options} simple item/>
+                        </Menu>
+                    </div>
+                </div>
                 <div className="starredList">
                     {sortStarredInfluencers(influencers).map((influencer: Object, index: number): Object => <StarredInfluencer key={index} influencer={influencer} toggleStarred={toggleStarred} starredList={starredList} />)}
                 </div>

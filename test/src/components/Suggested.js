@@ -15,7 +15,7 @@ class SuggestedInfluencer extends Component {
                 <img
                     src={instagram_profile_image}
                     alt='profile_pic'
-                    className="instaIcon"
+                    className="instaProfilePic"
                 />
                 <h2 className="suggestedInfName">{name}</h2>
                 <div className="instaHandle">{instaHandle}</div>

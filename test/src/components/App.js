@@ -8,8 +8,8 @@ class App extends Component {
     render(): * {
         return (
             <div className="App">
-                <Suggested />
-                <Starred />
+                <div className="suggestedWrapper"><Suggested /></div>
+                <div className="starredWrapper"><Starred /></div>
             </div>
         );
     }

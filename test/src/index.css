@@ -4,6 +4,31 @@ body {
     font-family: sans-serif;
 }
 
+h1 {
+    font-size: 22px;
+    margin-bottom: 4px;
+}
+
+.stat {
+    font-size: 20px;
+    margin-top: 4px;
+    font-weight: bold;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 15px;
+    text-align: center;
+    align-items: center;
+}
+
+.statLabel {
+    color: #a6a6a6;
+    font-size: 12px;
+    font-style: normal;
+}
+
 .App {
     display: grid;
     margin: 0;
@@ -12,6 +37,84 @@ body {
     height: 100%;
 }
 
+.wrapper {
+    display: grid;
+    grid-template-columns: 9fr 1fr;
+}
+
+.starredTitle {
+    color: #3b3b3b
+}
+
+.starredHeader {
+    display: grid;
+    grid-area: header;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 20px;
+}
+
+.starredInfluencer {
+    display: grid;
+    background-color: #FAFAFA;
+    grid-template-columns: 1fr 6fr 1fr 0fr;
+    grid-gap: 10px;
+    border: 1px solid #f5f5f5;
+    border-radius: 40px 5px 5px 40px;
+    margin-bottom: 10px;
+}
+
+.starred.suggested {
+    border-right: 1px solid #f5f5f5;
+    grid-area: content;
+}
+
+.instaProfilePic {
+    height: 70px;
+    border: double 4px transparent;
+    border-radius: 50%;
+    background-image: linear-gradient(white, white), radial-gradient(circle at left, #6D8CDC,#FFB485);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+
+.sortFilters {
+
+}
+
+.sorter {
+    margin-top: 14.7px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.sorterLabel {
+    color: #a6a6a6;
+    font-size: 12px;
+    font-style: normal;
+}
+
 .instaHandle {
-    color: gray;
+    color: #a6a6a6;
+}
+
+.instaIcon {
+
+}
+
+.suggestedInfName {
+    color: #3b3b3b
+}
+
+.removeButton {
+    height: 10px;
+    width: 10px;
+    background: transparent;
+    border: 0;
+    font-size: 16px;
+    color: #a6a6a6;
+    position: relative;
+    left: 25%;
+    top: 25%;
+    outline: none;
 }
