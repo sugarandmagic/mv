@@ -7,6 +7,7 @@ import Container from './Container/Container';
 import rootReducer from './reducers';
 import fetchInfluencersSaga from './saga/fetchInfluencers';
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export const mockState = [
     {
@@ -17,7 +18,7 @@ export const mockState = [
         'https://randomuser.me/api/portraits/women/6.jpg',
         'followers': 21231,
         'engagement': '6.84',
-        'starred': false
+        'starred': true
     },
     {
         'id': 876,
@@ -37,7 +38,7 @@ export const mockState = [
         'https://randomuser.me/api/portraits/women/71.jpg',
         'followers': 7161,
         'engagement': '2.36',
-        'starred': false
+        'starred': true
     },
     {
         'id': 654,
@@ -47,7 +48,7 @@ export const mockState = [
         'https://randomuser.me/api/portraits/women/49.jpg',
         'followers': 91100,
         'engagement': '1.61',
-        'starred': true
+        'starred': false
     },
     {
         'id': 543,
@@ -67,12 +68,13 @@ export const mockState = [
         'https://randomuser.me/api/portraits/women/44.jpg',
         'followers': 37300,
         'engagement': '4.73',
-        'starred': true
+        'starred': false
     }
 ];
 
 const initialState = ({
     influencers: mockState,
+    starredList: mockState.reduce((acc, element) => Object.assign({}, acc, {[element.id]: element.starred}), {})
 });
 
 const sagaMiddleware = createSagaMiddleware();
@@ -80,10 +82,9 @@ const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
     rootReducer,
     initialState,
-    compose(applyMiddleware(
+    composeEnhancers(applyMiddleware(
         sagaMiddleware,
     )),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
 sagaMiddleware.run(fetchInfluencersSaga);
