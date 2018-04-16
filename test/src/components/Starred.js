@@ -4,6 +4,7 @@ import _ from 'underscore';
 import { connect } from 'react-redux';
 import { getInfluencers, getSortOrder, getStarredList } from '../selectors/selectors';
 import { toggleStarred, sortStarred, influencerFetchRequested } from '../actions';
+import '../index.css';
 
 class StarredInfluencer extends Component {
 
@@ -15,6 +16,7 @@ class StarredInfluencer extends Component {
         };
 
         const { instagram_profile_image, name, instagram_username, engagement, followers, id } = influencer;
+        const instaHandle = (instagram_username) ? `@${instagram_username}` : '';
         return (starredList[influencer.id]) ? (
             <div>
                 <img
@@ -23,7 +25,7 @@ class StarredInfluencer extends Component {
                     className="instaIcon" />
                 <h2 className="suggestedInfName">{name}</h2>
                 <div className="instaHandle">
-                    {instagram_username}
+                    {instaHandle}
                 </div>
                 <div>{followers} Followers</div>
                 <div>{engagement}% Engagement</div>

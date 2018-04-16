@@ -9,6 +9,7 @@ class SuggestedInfluencer extends Component {
     render(): * {
         const { toggleStarred, influencer, starredList } = this.props;
         const { instagram_profile_image, name, instagram_username, id } = influencer;
+        const instaHandle = (instagram_username) ? `@${instagram_username}` : '';
         return (!starredList[influencer.id]) ? (
             <div>
                 <img
@@ -17,7 +18,7 @@ class SuggestedInfluencer extends Component {
                     className="instaIcon"
                 />
                 <h2 className="suggestedInfName">{name}</h2>
-                <div className="instaHandle">{instagram_username}</div>
+                <div className="instaHandle">{instaHandle}</div>
                 <button className="addButton" onClick={(): void => toggleStarred(id)}>+</button>
             </div>
         ) : '';
