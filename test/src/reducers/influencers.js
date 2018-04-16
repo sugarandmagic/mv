@@ -6,7 +6,7 @@ import toggleStarred from './toggleStarred';
  * Map of actions to reducers
  */
 const mapActionsToReducers = {
-    'TOGGLE_STARRED': toggleStarred
+    'TOGGLE_STARRED': toggleStarred,
 };
 
 /**

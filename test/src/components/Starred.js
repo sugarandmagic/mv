@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import _ from 'underscore';
 import { connect } from 'react-redux';
 import { getInfluencers, getSortOrder, getStarredList } from '../selectors/selectors';
-import { toggleStarred, sortStarred } from '../actions';
+import { toggleStarred, sortStarred, influencerFetchRequested } from '../actions';
 
 class StarredInfluencer extends Component {
 
@@ -42,12 +42,18 @@ const mapStateToProps = (state: Object = {}): Object => ({
 const mapDispatchToProps = {
     toggleStarred,
     sortStarred,
+    influencerFetchRequested,
 };
 
 class Starred extends Component {
 
+    componentWillMount() {
+        this.props.influencerFetchRequested();
+    }
+
     render(): * {
         const { toggleStarred, influencers, sortStarred, sortOrder, starredList } = this.props;
+        
         const onChange = (e: Event) => {
             sortStarred(e.target.value);
         };

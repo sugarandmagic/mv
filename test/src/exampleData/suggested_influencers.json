@@ -1,0 +1,28 @@
+{
+  "data": [
+    {
+      "id": 123,
+      "name": "Hannah Ross",
+      "instagram_username": "hross64346",
+      "instagram_profile_image":
+      "https://randomuser.me/api/portraits/women/62.jpg",
+      "starred": false
+    },
+    {
+      "id": 234,
+      "name": "Emily White",
+      "instagram_username": "emwhite",
+      "instagram_profile_image":
+      "https://randomuser.me/api/portraits/women/14.jpg",
+      "starred": false
+    },
+    {
+      "id": 345,
+      "name": "Olivia Wagner",
+      "instagram_username": "olivia_wagner_official",
+      "instagram_profile_image":
+      "https://randomuser.me/api/portraits/women/29.jpg",
+      "starred": false
+    }
+  ]
+}
