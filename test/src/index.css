@@ -1,3 +1,4 @@
+/* Generic body styles */
 body {
     margin: 20px;
     padding: 20px;
@@ -11,6 +12,89 @@ h1 {
     font-weight: bold;
 }
 
+.App {
+    display: grid;
+    margin: 0;
+    grid-template-columns: 1.5fr 3fr;
+    grid-gap: 0px;
+    height: 100%;
+}
+
+/* Styles for the filter */
+.sorterLabel {
+    color: #a6a6a6;
+    font-size: 12px;
+    font-style: normal;
+}
+
+.sorter {
+    display: grid;
+}
+
+/* Shared styles between the Starred and Suggested components */
+.starredTitle.suggestedTitle {
+    color: #3b3b3b
+}
+
+.starred.suggested {
+    border-right: 1px solid #f5f5f5;
+    grid-area: content;
+}
+
+.instaProfilePic {
+    height: 70px;
+    border: double 4px transparent;
+    border-radius: 50%;
+    background-image: linear-gradient(white, white), radial-gradient(circle at left, #6D8CDC,#FFB485);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+
+.instaHandle {
+    color: #a6a6a6;
+}
+
+i {
+    margin-right: 4px;
+}
+
+.toggleButton {
+    height: 10px;
+    width: 10px;
+    background: transparent;
+    border: 0;
+    font-size: 16px;
+    color: #a6a6a6;
+    position: relative;
+    left: 25%;
+    top: 25%;
+    outline: none;
+}
+
+/* Styles for the Starred component */
+.starredWrapper {
+    display: grid;
+    grid-template-columns: 9fr 1fr;
+}
+
+.starredHeader {
+    display: grid;
+    grid-area: header;
+    grid-template-columns: 3fr 1fr;
+    margin-bottom: 20px;
+}
+
+.starredInfluencer {
+    display: grid;
+    background-color: #FAFAFA;
+    grid-template-columns: 1fr 6fr 1fr 0fr;
+    grid-gap: 10px;
+    border: 1px solid #f5f5f5;
+    border-radius: 40px 5px 5px 40px;
+    margin-bottom: 10px;
+}
+
+/* Styles for the Starred stats  */
 .stat {
     font-size: 20px;
     margin-top: 4px;
@@ -31,42 +115,9 @@ h1 {
     font-style: normal;
 }
 
-.App {
-    display: grid;
-    margin: 0;
-    grid-template-columns: 1.5fr 3fr;
-    grid-gap: 0px;
-    height: 100%;
-}
-
-.wrapper {
-    display: grid;
-    grid-template-columns: 9fr 1fr;
-}
-
-.starredTitle.suggestedTitle {
-    color: #3b3b3b
-}
-
+/* Styles for the Suggestest component */
 .suggestedTitle {
     margin-bottom: 40px;
-}
-
-.starredHeader {
-    display: grid;
-    grid-area: header;
-    grid-template-columns: 1fr 1fr;
-    margin-bottom: 20px;
-}
-
-.starredInfluencer {
-    display: grid;
-    background-color: #FAFAFA;
-    grid-template-columns: 1fr 6fr 1fr 0fr;
-    grid-gap: 10px;
-    border: 1px solid #f5f5f5;
-    border-radius: 40px 5px 5px 40px;
-    margin-bottom: 10px;
 }
 
 .suggestedInfluencer {
@@ -76,51 +127,10 @@ h1 {
     margin-bottom: 10px;
 }
 
-.starred.suggested {
-    border-right: 1px solid #f5f5f5;
-    grid-area: content;
-}
-
-.instaProfilePic {
-    height: 70px;
-    border: double 4px transparent;
-    border-radius: 50%;
-    background-image: linear-gradient(white, white), radial-gradient(circle at left, #6D8CDC,#FFB485);
-    background-origin: border-box;
-    background-clip: content-box, border-box;
-}
-
-.sorterLabel {
-    color: #a6a6a6;
-    font-size: 12px;
-    font-style: normal;
-}
-
-.instaHandle {
-    color: #a6a6a6;
-}
-
-i {
-    margin-right: 4px;
-}
-
 .suggestedInfName {
     color: #3b3b3b
 }
 
 .suggestedList: {
     margin-top: auto;
-}
-
-.removeButton {
-    height: 10px;
-    width: 10px;
-    background: transparent;
-    border: 0;
-    font-size: 16px;
-    color: #a6a6a6;
-    position: relative;
-    left: 25%;
-    top: 25%;
-    outline: none;
 }

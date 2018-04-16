@@ -24,7 +24,7 @@ class SuggestedInfluencer extends Component {
                         <i className="fab fa-instagram"></i>{instaHandle}
                     </div>
                 </div>
-                <div className="removeWrapper"><button className="removeButton" onClick={ (): void => toggleStarred(id)}>＋</button></div>
+                <div className="removeWrapper"><button className="toggleButton" onClick={ (): void => toggleStarred(id)}>＋</button></div>
             </div>
         ) : '';
     }

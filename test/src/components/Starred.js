@@ -20,7 +20,7 @@ class StarredInfluencer extends Component {
         const instaHandle = (instagram_username) ? `${instagram_username}` : '';
 
         return (starredList[influencer.id]) ? (
-            <div className="wrapper">
+            <div className="starredWrapper">
                 <div className="starredInfluencer">
                     <img
                         src={instagram_profile_image}
@@ -37,7 +37,7 @@ class StarredInfluencer extends Component {
                         <div className="engagement"><div className="stat">{engagement}%</div><div className="statLabel">Engagement</div></div>
                     </div>
                 </div>
-                <div className="removeWrapper"><button className="removeButton" onClick={ (): void => onClick(id)}>✕</button></div>
+                <div className="removeWrapper"><button className="toggleButton" onClick={ (): void => onClick(id)}>✕</button></div>
             </div>
         ) : '';
     }
