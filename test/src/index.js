@@ -1,9 +1,12 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import createSagaMiddleware from 'redux-saga'
 import Container from './Container/Container';
 import rootReducer from './reducers';
+import fetchInfluencersSaga from './saga/fetchInfluencers';
+
 
 export const mockState = [
     {
@@ -14,7 +17,7 @@ export const mockState = [
         'https://randomuser.me/api/portraits/women/6.jpg',
         'followers': 21231,
         'engagement': '6.84',
-        'starred': true
+        'starred': false
     },
     {
         'id': 876,
@@ -34,7 +37,7 @@ export const mockState = [
         'https://randomuser.me/api/portraits/women/71.jpg',
         'followers': 7161,
         'engagement': '2.36',
-        'starred': true
+        'starred': false
     },
     {
         'id': 654,
@@ -54,7 +57,7 @@ export const mockState = [
         'https://randomuser.me/api/portraits/women/26.jpg',
         'followers': 16013,
         'engagement': '6.28',
-        'starred': true
+        'starred': false
     },
     {
         'id': 432,
@@ -65,42 +68,25 @@ export const mockState = [
         'followers': 37300,
         'engagement': '4.73',
         'starred': true
-    },
-    {
-        'id': 123,
-        'name': 'Hannah Ross',
-        'instagram_username': 'hross64346',
-        'instagram_profile_image':
-        'https://randomuser.me/api/portraits/women/62.jpg',
-        'starred': false
-    },
-    {
-        'id': 234,
-        'name': 'Emily White',
-        'instagram_username': 'emwhite',
-        'instagram_profile_image':
-        'https://randomuser.me/api/portraits/women/14.jpg',
-        'starred': false
-    },
-    {
-        'id': 345,
-        'name': 'Olivia Wagner',
-        'instagram_username': 'olivia_wagner_official',
-        'instagram_profile_image':
-        'https://randomuser.me/api/portraits/women/29.jpg'
     }
 ];
 
 const initialState = ({
     influencers: mockState,
-    starredList: mockState.reduce((acc, element) => Object.assign({}, acc, {[element.id]: element.starred}), {}),
 });
+
+const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
     rootReducer,
     initialState,
+    compose(applyMiddleware(
+        sagaMiddleware,
+    )),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
+
+sagaMiddleware.run(fetchInfluencersSaga);
 
 render(
     <Provider store={store}>

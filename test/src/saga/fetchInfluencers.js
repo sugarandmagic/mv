@@ -1,19 +1,37 @@
 //@flow
-import { put } from 'redux-saga/effects'
+import { call, put, takeLatest } from 'redux-saga/effects'
+import fetch from 'node-fetch';
 
-const flattenResponse = () => {
-    //this will be a function to flatten out the data into the model demonstrated in the initialState
-}
-
-/**
- * 
- */
 function* fetchInfluencers(action: Object): Iterator<*> {
-    const starredResponse = yield fetch('path-to-starred-influencers');
-    const starredJson = flattenResponse(yield starredResponse.json());
-    const suggestedResponse = yield fetch('path-to-suggested-influencers');
-    const suggestedJson = flattenResponse(yield suggestedResponse.json());
-    yield put('INFLUENCER_FETCH_SUCEEDED');
+    try {
+        const influencersStarred = yield call(fetchInfluencersData('starred'));
+        const influencersSuggested = yield call(fetchInfluencersData('suggested'));
+        const influencers = transformInfluencersData(influencersStarred, influencersSuggested);
+        yield put({type: 'INFLUENCER_FETCH_SUCEEDED', influencers: influencers});
+    } catch (e) {
+        yield put({type: 'INFLUENCER_FETCH_FAILED', message: e.message});
+    }
 }
 
-export default fetchInfluencers;
+const transformInfluencersData = (starred: Array, suggested: Array): Array => {
+    return console.log(starred.concat(suggested))
+}
+
+const fetchInfluencersData = (type: string) => {
+    if (type === 'starred') {
+        fetch('https://api.github.com/users/github')
+            .then(res => res.json())
+            .then(json => console.log(json));
+    }
+    else {
+        fetch('https://api.github.com/users/github')
+            .then(res => res.json())
+            .then(json => console.log(json))
+    }
+}
+
+function* fetchInfluencersSaga() {
+    yield takeLatest('INFLUENCER_FETCH_REQUESTED', fetchInfluencers);
+}
+
+export default fetchInfluencersSaga;
