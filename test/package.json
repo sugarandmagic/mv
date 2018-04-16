@@ -4,10 +4,6 @@
   "private": true,
   "scripts": {
     "start": "react-scripts start",
-    "eject": "react-scripts eject",
-    "main": "lib/index.js",
-    "build": "babel src/ -d dist/",
-    "prepublish": "npm run build",
     "flow": "flow",
     "lint": "eslint src",
     "mocha": "BABEL_ENV=test mocha --require ./src/test/index.js 'src/test/**/*.test.js'"
@@ -19,6 +15,7 @@
     "react-redux": "^5.0.7",
     "react-scripts": "1.1.4",
     "redux": "^3.7.2",
+    "redux-saga": "^0.16.0",
     "reselect": "^3.0.1",
     "sinon-chai": "^3.0.0",
     "underscore": "^1.8.3"
