@@ -1,6 +1,6 @@
 //@flow
 //types
-import { StarredListType, StateType } from '../flowtypes/flowtypes';
+import type { StarredListType, StateType, InfluencersType } from '../flowtypes/flowtypes';
 
 /**
  * Select the Influencers state leaf

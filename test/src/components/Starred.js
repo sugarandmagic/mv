@@ -8,14 +8,14 @@ import { DropdownButton, MenuItem } from 'react-bootstrap';
 import { getInfluencers, getSortOrder, getStarredList } from '../selectors/selectors';
 import { toggleStarred, sortStarred, influencerFetchRequested } from '../actions';
 //types
-import { StateType, StarredPropsType, InfluencersType, InfluencerType } from '../flowtypes/flowtypes';
+import type { StateType, StarredPropsType, StarredStatePropsType, StarredDispatchPropsType, InfluencersType, InfluencerType, StarredInfluencerPropsType } from '../flowtypes/flowtypes';
 
-class StarredInfluencer extends Component {
+class StarredInfluencer extends Component<StarredInfluencerPropsType, StateType> {
 
     render(): * {
         const { toggleStarred, influencer, starredList } = this.props;
 
-        const onClick = (id: string) => {
+        const onClick = (id: number) => {
             toggleStarred(id);
         };
 
@@ -47,19 +47,19 @@ class StarredInfluencer extends Component {
     }
 }
 
-const mapStateToProps = (state: StateType = {}): StarredPropsType => ({
+const mapStateToProps = (state: StateType): StarredStatePropsType => ({
     influencers: getInfluencers(state),
     sortOrder: getSortOrder(state),
     starredList: getStarredList(state)
 });
 
-const mapDispatchToProps = {
+const mapDispatchToProps: StarredDispatchPropsType = {
     toggleStarred,
     sortStarred,
     influencerFetchRequested,
 };
 
-class Starred extends Component {
+class Starred extends Component<StarredPropsType, StateType> {
 
     componentWillMount() {
         this.props.influencerFetchRequested();
@@ -97,7 +97,7 @@ class Starred extends Component {
                     </div>
                 </div>
                 <div className="starred_list">
-                    {sortStarredInfluencers(influencers).map((influencer: InfluencerType, index: number): InfluencerType =>
+                    {sortStarredInfluencers(influencers).map((influencer: InfluencerType, index: number): React$Element<*> =>
                         <StarredInfluencer
                             key={index}
                             influencer={influencer}

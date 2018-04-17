@@ -2,14 +2,14 @@
 // internal modules
 import toggleStarred from './toggleStarred';
 //types
-import type { InfluencersType, ActionType } from '../flowtypes/flowtypes';
+import type { InfluencersType, InfluencerFetchSuccessActionType } from '../flowtypes/flowtypes';
 
 /**
  * Map of actions to reducers
  */
 const mapActionsToReducers = {
     'TOGGLE_STARRED': toggleStarred,
-    'INFLUENCER_FETCH_SUCCEEDED': (action: ActionType): InfluencersType => action.influencers,
+    'INFLUENCER_FETCH_SUCCEEDED': (action: InfluencerFetchSuccessActionType): InfluencersType => action.influencers,
 };
 
 /**
@@ -19,7 +19,7 @@ const mapActionsToReducers = {
  * @param {Object}  action  The passed action
  * @return {Array}          The new state or unmodified if no matching reducer
  */
-const influencers = (state: InfluencersType = [], action: ActionType): InfluencersType =>
-    (mapActionsToReducers[action.type]) ? mapActionsToReducers[action.type](state: InfluencersType, action: ActionType) : state;
+const influencers = (state: InfluencersType = [], action: {[key: string]: *}): InfluencersType =>
+    (mapActionsToReducers[action.type]) ? mapActionsToReducers[action.type](state, action) : state;
 
 export default influencers;

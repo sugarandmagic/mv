@@ -1,13 +1,13 @@
 //@flow
 //types
-import { ActionType, InfluencersType } from '../flowtypes/flowtypes';
+import type { ToggleStarredActionType, SortStarredActionType, InfluencerFetchSuccessActionType, InfluencerFetchRequestedActionType, InfluencersType } from '../flowtypes/flowtypes';
 
 /**
 * toggleStarred - action to toggle the starred status
 * @param  {string} id ID of the influencer
 * @return {Object}    Redux action
 */
-export const toggleStarred = (id: string): ActionType => ({
+export const toggleStarred = (id: number): ToggleStarredActionType => ({
     type: 'TOGGLE_STARRED',
     id,
 });
@@ -18,7 +18,7 @@ export const toggleStarred = (id: string): ActionType => ({
 * @param  {string} sortKey  Key on which to sort the influencers
 * @return {ActionType}      Redux action
 */
-export const sortStarred = (sortKey: string): ActionType => ({
+export const sortStarred = (sortKey: string): SortStarredActionType => ({
     type: 'SORT_STARRED',
     sortKey
 });
@@ -27,7 +27,7 @@ export const sortStarred = (sortKey: string): ActionType => ({
 * influencerFetchRequested - action to trigger the data fetch
 * @return {ActionType} Redux action
 */
-export const influencerFetchRequested = (): ActionType => ({
+export const influencerFetchRequested = (): InfluencerFetchRequestedActionType => ({
     type: 'INFLUENCER_FETCH_REQUESTED',
 });
 
@@ -36,7 +36,7 @@ export const influencerFetchRequested = (): ActionType => ({
 * @param  {InfluencersType} influencers Influencers payload
 * @return {ActionType}                  Redux action    
 */
-export const influencerFetchSuccess = (influencers: InfluencersType): ActionType => ({
+export const influencerFetchSuccess = (influencers: InfluencersType): InfluencerFetchSuccessActionType => ({
     type: 'INFLUENCER_FETCH_SUCCEEDED',
     influencers,
 });

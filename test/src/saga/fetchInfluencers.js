@@ -5,7 +5,7 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import starredData from '../exampleData/starred_influencers.json';
 import suggestedData from '../exampleData/suggested_influencers.json';
 //types
-import { InfluencersType, RawInfluencerType } from '../flowtypes/flowtypes';
+import type { InfluencersType, RawInfluencerType } from '../flowtypes/flowtypes';
 
 /**
 * fetchInfluencers - saga to handle the external fetch of influencers data from two endpoints
@@ -29,29 +29,32 @@ function* fetchInfluencers(): Iterator<*> {
 * @param  {Array} suggested Fetched data from the Suggested endpoint
 * @return {InfluencersType} Flattened and transformed data ready to be consumed by the application
 */
+// $FlowFixMe
 const transformInfluencersData = (starred: Array<RawInfluencerType>, suggested: Array<RawInfluencerType>): InfluencersType => {
     // Ideally I wanted to transform the data here to shorten object keys,
     // flatten the 'statistics' object and to add the 'starred' flag.
     // Normally I would have used Immutable for this whole project and transformed the data into Records,
     // but because of time constraints I have manually edited the data at source and faked the fetch.
-    return starred.concat(suggested);
+    const starredTransformed = starred;
+    const suggestedTransformed = suggested;
+    return starredTransformed.concat(suggestedTransformed);
 };
 
 
-const fakeFetch = async (data: *): Array<RawInfluencerType> => await data.data;
+const fakeFetch = async (data: *): Promise<Array<RawInfluencerType>> => await data.data;
 
 /**
 * fetchInfluencersData - async function to get data from either endpoint
 * @param  {string} type Whether Starred or Suggested data
-* @return {Promise<Array>} Response from fetch
+* @return {Promise<InfluencersType>} Response from fetch
 */
-const fetchInfluencersData = async (type: string): InfluencersType => (type === 'starred') ?
+const fetchInfluencersData = async (type: string): Promise<InfluencersType> => (type === 'starred') ?
     await fakeFetch(starredData) : await fakeFetch(suggestedData);
 
 /**
  * Watch function for saga
  */
-function* fetchInfluencersSaga(): void {
+function* fetchInfluencersSaga(): Generator<*, *, *> {
     yield takeLatest('INFLUENCER_FETCH_REQUESTED', fetchInfluencers);
 }
 

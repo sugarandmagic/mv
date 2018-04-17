@@ -1,6 +1,6 @@
 //@flow
 //types
-import { ActionType, InfluencersType, InfluencerType } from '../flowtypes/flowtypes';
+import type { ToggleStarredActionType, InfluencersType, InfluencerType } from '../flowtypes/flowtypes';
 
 /**
 * toggleStarred - toggles the 'starred' field on the selected influencer
@@ -9,7 +9,7 @@ import { ActionType, InfluencersType, InfluencerType } from '../flowtypes/flowty
 * @param  {Object} action  The redux action dispatched
 * @return {Array}          The new or unmodified state
 */
-const toggleStarred = (state: InfluencersType = [], action: ActionType): InfluencersType => {
+const toggleStarred = (state: InfluencersType = [], action: ToggleStarredActionType): InfluencersType => {
     const influencerIndex = state.findIndex((influencer: InfluencerType): boolean => influencer.id === action.id);
     if (influencerIndex > -1) {
         Object.assign(state[influencerIndex], {starred: !(state[influencerIndex].starred)});
