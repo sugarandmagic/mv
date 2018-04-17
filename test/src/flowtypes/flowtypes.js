@@ -38,8 +38,8 @@ export type InfluencerFetchSuccessActionType = {
 };
 
 export type InfluencerFetchRequestedActionType = {
-    +type: string,
-}
+    +type: string
+};
 
 export type StateType = {
     influencers: InfluencersType,
@@ -56,7 +56,7 @@ export type StarredDispatchPropsType = {
 export type StarredStatePropsType = {
     influencers: InfluencersType,
     sortOrder: Array<string>,
-    starredList: StarredListType,
+    starredList: StarredListType
 };
 
 export type StarredPropsType = StarredStatePropsType & StarredDispatchPropsType;
@@ -67,7 +67,7 @@ export type StarredInfluencerStatePropsType = {
 };
 
 export type StarredInfluencerDispatchPropsType = {
-    toggleStarred: (id: number) => ToggleStarredActionType,
+    toggleStarred: (id: number) => ToggleStarredActionType
 };
 
 export type SuggestedInfluencerStatePropsType = {
@@ -76,7 +76,7 @@ export type SuggestedInfluencerStatePropsType = {
 };
 
 export type SuggestedInfluencerDispatchPropsType = {
-    toggleStarred: (id: number) => ToggleStarredActionType,
+    toggleStarred: (id: number) => ToggleStarredActionType
 };
 
 export type StarredInfluencerPropsType = StarredInfluencerStatePropsType & StarredInfluencerDispatchPropsType;
@@ -87,12 +87,12 @@ export type SuggestedPropsType = SuggestedStatePropsType & SuggestedDispatchProp
 
 export type SuggestedStatePropsType = {
     influencers: InfluencersType,
-    starredList: StarredListType,
-}
+    starredList: StarredListType
+};
 
 export type SuggestedDispatchPropsType = {
     toggleStarred: (id: number) => ToggleStarredActionType
-}
+};
 
 type StatsType = {
     followers: number,

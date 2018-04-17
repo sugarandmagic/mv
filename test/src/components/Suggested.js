@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { getInfluencers } from '../selectors/selectors';
 import { toggleStarred } from '../actions';
 //types 
-import type { ToggleStarredActionType, StateType, SuggestedPropsType, SuggestedStatePropsType, SuggestedDispatchPropsType, InfluencerType, SuggestedInfluencerPropsType } from '../flowtypes/flowtypes';
+import type { ToggleStarredActionType, StateType, SuggestedPropsType, SuggestedStatePropsType, InfluencerType, SuggestedInfluencerPropsType } from '../flowtypes/flowtypes';
 
 class SuggestedInfluencer extends Component<SuggestedInfluencerPropsType, StateType> {
 

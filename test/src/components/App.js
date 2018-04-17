@@ -4,7 +4,7 @@ import Suggested from './Suggested';
 import Starred from './Starred';
 import '../index.css';
 //types
-import type { StateType, StarredPropsType } from '../flowtypes/flowtypes'
+import type { StateType, StarredPropsType } from '../flowtypes/flowtypes';
 
 class App extends Component<StarredPropsType, StateType> {
     render(): * {
