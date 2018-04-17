@@ -1,7 +1,18 @@
 //@flow
+//types
+import type { StarredListType, StateType, InfluencersType } from '../flowtypes/flowtypes';
 
-export const getInfluencers = (state: Object): Array => state.influencers;
+/**
+ * Select the Influencers state leaf
+ */
+export const getInfluencers = (state: StateType): InfluencersType => state.influencers;
 
-export const getSortOrder = (state: Object): Array => state.sortOrder;
+/**
+ * Select the sortOrder state leaf
+ */
+export const getSortOrder = (state: StateType): Array<string> => state.sortOrder;
 
-export const getStarredList = (state: Object): Array => state.starredList;
+/**
+ * Select the starredList state leaf
+ */
+export const getStarredList = (state: StateType): StarredListType => state.starredList;

@@ -1,12 +1,14 @@
 //@flow
 // external imports
-import React, { Component } from 'react';
+import React, { Component } from 'react'; // eslint-disable-line no-unused-vars
 import { connect } from 'react-redux';
 // internal imports
 import { getInfluencers } from '../selectors/selectors';
 import { toggleStarred } from '../actions';
+//types 
+import type { ToggleStarredActionType, StateType, SuggestedPropsType, SuggestedStatePropsType, SuggestedDispatchPropsType, InfluencerType, SuggestedInfluencerPropsType } from '../flowtypes/flowtypes';
 
-class SuggestedInfluencer extends Component {
+class SuggestedInfluencer extends Component<SuggestedInfluencerPropsType, StateType> {
 
     render(): * {
         const { toggleStarred, influencer, starredList } = this.props;
@@ -26,13 +28,13 @@ class SuggestedInfluencer extends Component {
                         <i className="fab fa-instagram"></i>{instaHandle}
                     </div>
                 </div>
-                <div className="remove_wrapper"><button className="toggle_button" onClick={ (): void => toggleStarred(id)}>＋</button></div>
+                <div className="remove_wrapper"><button className="toggle_button" onClick={ (): ToggleStarredActionType => toggleStarred(id)}>＋</button></div>
             </div>
         ) : '';
     }
 }
 
-const mapStateToProps = (state: Object = {}): Object => ({
+const mapStateToProps = (state: StateType): SuggestedStatePropsType => ({
     influencers: getInfluencers(state),
     starredList: state.starredList
 });
@@ -41,7 +43,7 @@ const mapDispatchToProps = {
     toggleStarred,
 };
 
-class Suggested extends Component {
+class Suggested extends Component<SuggestedPropsType, StateType> {
 
     render(): * {
         const { toggleStarred, influencers, starredList } = this.props;
@@ -49,7 +51,7 @@ class Suggested extends Component {
             <div className="suggested">
                 <h1 className="suggested_title">Suggested Influencers</h1>
                 <div className="suggested_list">
-                    {influencers.map((influencer: Object, index: number): Object =>
+                    {influencers.map((influencer: InfluencerType, index: number): React$Element<*> =>
                         <SuggestedInfluencer
                             key={index}
                             influencer={influencer}

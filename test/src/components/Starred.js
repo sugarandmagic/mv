@@ -1,19 +1,21 @@
 //@flow
 // external imports
-import React, { Component } from 'react';
+import React, { Component } from 'react'; // eslint-disable-line no-unused-vars
 import _ from 'underscore';
 import { connect } from 'react-redux';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
 // internal imports
 import { getInfluencers, getSortOrder, getStarredList } from '../selectors/selectors';
 import { toggleStarred, sortStarred, influencerFetchRequested } from '../actions';
+//types
+import type { StateType, StarredPropsType, StarredStatePropsType, StarredDispatchPropsType, InfluencersType, InfluencerType, StarredInfluencerPropsType } from '../flowtypes/flowtypes';
 
-class StarredInfluencer extends Component {
+class StarredInfluencer extends Component<StarredInfluencerPropsType, StateType> {
 
     render(): * {
         const { toggleStarred, influencer, starredList } = this.props;
 
-        const onClick = (id: string) => {
+        const onClick = (id: number) => {
             toggleStarred(id);
         };
 
@@ -45,19 +47,19 @@ class StarredInfluencer extends Component {
     }
 }
 
-const mapStateToProps = (state: Object = {}): Object => ({
+const mapStateToProps = (state: StateType): StarredStatePropsType => ({
     influencers: getInfluencers(state),
     sortOrder: getSortOrder(state),
     starredList: getStarredList(state)
 });
 
-const mapDispatchToProps = {
+const mapDispatchToProps: StarredDispatchPropsType = {
     toggleStarred,
     sortStarred,
     influencerFetchRequested,
 };
 
-class Starred extends Component {
+class Starred extends Component<StarredPropsType, StateType> {
 
     componentWillMount() {
         this.props.influencerFetchRequested();
@@ -69,7 +71,7 @@ class Starred extends Component {
         const onChange = (eventKey: string) => {
             sortStarred(eventKey);
         };
-        const sortStarredInfluencers = (starred: Array): Array => {
+        const sortStarredInfluencers = (starred: InfluencersType): InfluencersType => {
             if (sortOrder[1] === 'hilo' || undefined) {
                 return _.sortBy(starred, sortOrder[0]).reverse();
             } else {
@@ -95,7 +97,7 @@ class Starred extends Component {
                     </div>
                 </div>
                 <div className="starred_list">
-                    {sortStarredInfluencers(influencers).map((influencer: Object, index: number): Object =>
+                    {sortStarredInfluencers(influencers).map((influencer: InfluencerType, index: number): React$Element<*> =>
                         <StarredInfluencer
                             key={index}
                             influencer={influencer}
