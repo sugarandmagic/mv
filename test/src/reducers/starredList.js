@@ -9,7 +9,7 @@ import type { StarredListActionType, StarredListType } from '../flowtypes/flowty
  * @param  {Object} action  The redux action dispatched
  * @return {Array}          The new or unmodified state
  */
-const starredList = (state: StarredListType, action: StarredListActionType): StarredListType => {
+const starredList = (state: StarredListType = { id: '', starred: false }, action: StarredListActionType): StarredListType => {
     if (action.type === 'TOGGLE_STARRED' && typeof action.id === 'number') {
         return Object.assign({}, state, { [action.id]: !state[action.id]});
     }

@@ -9,7 +9,7 @@ import type { InfluencersType, InfluencerFetchSuccessActionType } from '../flowt
  */
 const mapActionsToReducers = {
     'TOGGLE_STARRED': toggleStarred,
-    'INFLUENCER_FETCH_SUCCEEDED': (action: InfluencerFetchSuccessActionType): InfluencersType => action.influencers,
+    'INFLUENCER_FETCH_SUCCEEDED': (state: InfluencersType = [], action: InfluencerFetchSuccessActionType): InfluencersType => action.influencers,
 };
 
 /**
