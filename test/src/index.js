@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
 import { render } from 'react-dom';
 import { createStore, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import createSagaMiddleware from 'redux-saga'
+import createSagaMiddleware from 'redux-saga';
 import App from './components/App';
 import rootReducer from './reducers';
 import fetchInfluencersSaga from './saga/fetchInfluencers';

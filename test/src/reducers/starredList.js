@@ -1,4 +1,6 @@
 //@flow
+//types
+import { ActionType, StarredListType } from '../flowtypes/flowtypes';
 
 /**
  * toggleStarred - toggles the 'starred' field on the selected influencer
@@ -7,7 +9,7 @@
  * @param  {Object} action  The redux action dispatched
  * @return {Array}          The new or unmodified state
  */
-const starredList = (state: Array = {}, action: Object): Object => {
+const starredList = (state: StarredListType = {}, action: ActionType): StarredListType => {
     if (action.type === 'TOGGLE_STARRED') {
         return Object.assign({}, state, { [action.id]: !state[action.id]});
     }

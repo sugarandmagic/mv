@@ -1,10 +1,12 @@
 //@flow
 // external imports
-import React, { Component } from 'react';
+import React, { Component } from 'react'; // eslint-disable-line no-unused-vars
 import { connect } from 'react-redux';
 // internal imports
 import { getInfluencers } from '../selectors/selectors';
 import { toggleStarred } from '../actions';
+//types 
+import { StateType, SuggestedPropsType, InfluencerType } from '../flowtypes/flowtypes';
 
 class SuggestedInfluencer extends Component {
 
@@ -32,7 +34,7 @@ class SuggestedInfluencer extends Component {
     }
 }
 
-const mapStateToProps = (state: Object = {}): Object => ({
+const mapStateToProps = (state: StateType = {}): SuggestedPropsType => ({
     influencers: getInfluencers(state),
     starredList: state.starredList
 });
@@ -49,7 +51,7 @@ class Suggested extends Component {
             <div className="suggested">
                 <h1 className="suggested_title">Suggested Influencers</h1>
                 <div className="suggested_list">
-                    {influencers.map((influencer: Object, index: number): Object =>
+                    {influencers.map((influencer: InfluencerType, index: number): InfluencerType =>
                         <SuggestedInfluencer
                             key={index}
                             influencer={influencer}

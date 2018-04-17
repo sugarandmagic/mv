@@ -1,5 +1,5 @@
 //@flow
-import React, { Component } from 'react';
+import React, { Component } from 'react'; // eslint-disable-line no-unused-vars
 import Suggested from './Suggested';
 import Starred from './Starred';
 import '../index.css';
